@@ -1,0 +1,79 @@
+{
+  "Cards": [
+    {
+      "name": "Ava2",
+      "id": 1,
+      "image": "idk",
+      "hp": 100,
+      "defense": 1,
+      "type": ["human", "science", "cyborg"],
+      "weakness": ["machine", "ice", "fire"],
+      "strength": ["machine", "electric"],
+      "story": "character story - short",
+      "options": [
+        {
+          "id": 1,
+          "title": "Blaster",
+          "attack": 1,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 1,
+          "title": "Punch",
+          "attack": 1,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 3,
+          "title": "Block",
+          "attack": 0,
+          "accuracy": 1,
+          "impact": 0,
+          "effect": "idk"
+        }
+      ]
+    },
+
+    {
+      "name": "Charles2",
+      "id": 2,
+      "image": "idk",
+      "hp": 100,
+      "defense": 1,
+      "type": ["human", "science", "idk"],
+      "weakness": ["machine", "ice", "fire"],
+      "strength": ["machine", "science"],
+      "story": "character story - short",
+      "options": [
+        {
+          "id": 1,
+          "title": "Blaster",
+          "attack": 1,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 1,
+          "title": "Punch",
+          "attack": 1,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 3,
+          "title": "Block",
+          "attack": 0,
+          "accuracy": 1,
+          "impact": 0,
+          "effect": "idk"
+        }
+      ]
+    }
+  ]
+}
