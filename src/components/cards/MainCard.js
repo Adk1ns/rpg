@@ -19,35 +19,50 @@ const cardAtoms = [
   Card5Atom,
 ]
 
+const MinusHpButton = ({ cardAtom }) => {
+  const [cardData, setCardData] = useAtom(cardAtom)
+  const card = cardAtom[0] // Extract the card object from the atom
+
+  const minusHp = () => {
+    setCardData((prevCardData) => {
+      if (prevCardData.hp) {
+        return {
+          ...prevCardData,
+          hp: prevCardData.hp - 1,
+        }
+      }
+      return prevCardData
+    })
+  }
+
+  if (!cardData || !cardData.hp) {
+    return null // If the atom has no HP value, don't render the button
+  }
+
+  return <button onClick={minusHp}>-1 hp {cardData.name}</button>
+}
+
 const MainCard = ({ card, index }) => {
   const [cardData, setCardData] = useAtom(cardAtoms[index])
-  const [card2Data, setCard2Data] = useAtom(Card2Atom)
+  const [viewState, setViewState] = React.useState('attack')
 
   React.useEffect(() => {
     setCardData(card)
   }, [card, setCardData])
 
-  const minusHp = () => {
-    setCardData((prevCardData) => ({
-      ...prevCardData,
-      hp: (prevCardData.hp || 0) - 1,
-    }))
-  }
-
-  const minusHpCard2 = () => {
-    setCard2Data((prevCard2Data) => ({
-      ...prevCard2Data,
-      hp: (prevCard2Data.hp || 0) - 1,
-    }))
-  }
-
   console.log(card, index)
+
   return (
     <MainCardStyles>
       <p>{card.name}</p>
       {cardData && <p>{cardData.hp || 0}</p>}
-      <button onClick={minusHp}>-1 hp</button>
-      <button onClick={minusHpCard2}>-1 hp for Card2Atom</button>
+      {viewState === 'attack' && (
+        <>
+          {cardAtoms.map((atom, i) => (
+            <MinusHpButton key={i} cardAtom={atom} />
+          ))}
+        </>
+      )}
     </MainCardStyles>
   )
 }
