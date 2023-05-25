@@ -3,23 +3,34 @@ import ArenaStyles from './ArenaStyles'
 import CardSlot from './CardSlot'
 import EffectCardSlot from './EffectCardSlot'
 import { useAtom } from 'jotai'
-import { Player1HandAtom, Player2HandAtom } from '../../data/Atoms'
+import {
+  Player1HandAtom,
+  Player2HandAtom,
+  Player1TableAtom,
+  Player2TableAtom,
+} from '../../data/Atoms'
 import DeckOne from '../../data/decks/DeckOne.json'
 import DeckTwo from '../../data/decks/DeckTwo.json'
+import P1Card from './P1Card'
+import P2Card from './P2Card'
+import MainCard from '../cards/MainCard'
 
-//ArenaHost will be the layout for the arenas that are passed to it
-//an arena will impact the stats of the character during play
+// ArenaHost will be the layout for the arenas that are passed to it
+// an arena will impact the stats of the character during play
 
 const ArenaHost = ({ arena }) => {
-  const [Player1Hand, setPlayer1Hand] = useAtom(Player1HandAtom)
-  const [Player1Deck, setPlayer1Deck] = React.useState(DeckOne.Cards)
-  const [Player2Hand, setPlayer2Hand] = useAtom(Player2HandAtom)
-  const [Player2Deck, setPlayer2Deck] = React.useState(DeckTwo.Cards)
+  const [P1Hand, setP1Hand] = useAtom(Player1HandAtom)
+  const [P1Deck, setP1Deck] = React.useState(DeckOne.Cards)
+  const [P1Table, setP1Table] = useAtom(Player1TableAtom)
 
-  console.log(Player1Hand, Player1Deck)
-  console.log(Player2Hand, Player2Deck)
+  const [P2Hand, setP2Hand] = useAtom(Player2HandAtom)
+  const [P2Deck, setP2Deck] = React.useState(DeckTwo.Cards)
+  const [P2Table, setP2Table] = useAtom(Player2TableAtom)
 
-  //function that draws a card from the deck and adds it to the hand
+  // console.log(P1Hand, P1Deck, P1Table.length)
+  // console.log(P2Hand, P2Deck)
+
+  // function that draws a card from the deck and adds it to the hand
   const drawCard = (playerHand, setPlayerHand, playerDeck, setPlayerDeck) => {
     if (playerDeck.length === 0) {
       console.log('Deck is empty')
@@ -32,31 +43,33 @@ const ArenaHost = ({ arena }) => {
     }
   }
 
-  const drawCardPlayer1 = () => {
-    drawCard(Player1Hand, setPlayer1Hand, Player1Deck, setPlayer1Deck)
+  const drawCardP1 = () => {
+    drawCard(P1Hand, setP1Hand, P1Deck, setP1Deck)
   }
 
-  const drawCardPlayer2 = () => {
-    drawCard(Player2Hand, setPlayer2Hand, Player2Deck, setPlayer2Deck)
+  const drawCardP2 = () => {
+    drawCard(P2Hand, setP2Hand, P2Deck, setP2Deck)
   }
 
   return (
     <ArenaStyles textColor={'red'}>
       <div className="player-1-cards">
-        <div>
-          Player 1 <button onClick={drawCardPlayer1}>Draw Card</button>
-        </div>
-        <CardSlot />
-        <CardSlot />
-        <CardSlot />
+        <P1Card drawCardP1={drawCardP1} />
+
+        {P1Table.length > 0 &&
+          P1Table.map((card, index) => {
+            return <MainCard card={card} key={index} index={index} />
+          })}
+
         <EffectCardSlot />
       </div>
       Arena
       <div className="player-2-cards">
-        Computer <button onClick={drawCardPlayer2}>Draw Card</button>
-        <CardSlot />
-        <CardSlot />
-        <CardSlot />
+        <P2Card drawCardP2={drawCardP2} />
+        {P2Table.length > 0 &&
+          P2Table.map((card, index) => {
+            return <MainCard card={card} key={index} index={index + 3} />
+          })}
         <EffectCardSlot />
       </div>
     </ArenaStyles>
