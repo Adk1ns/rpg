@@ -20,9 +20,7 @@ const cardAtoms = [
   Card5Atom,
 ]
 
-////////////////////////////////////////////////////////////////////////
-
-const MainCard = ({ card, index }) => {
+const MainCard = ({ card, index, onCardDestroyed }) => {
   const [cardData, setCardData] = useAtom(cardAtoms[index])
   const [viewState, setViewState] = React.useState('attack')
 
@@ -30,30 +28,44 @@ const MainCard = ({ card, index }) => {
     setCardData(card)
   }, [card, setCardData])
 
-  console.log(card, index)
+  const handleCardDestroyed = () => {
+    const adjustedIndex = index >= 3 ? index - 3 : index
+    onCardDestroyed(adjustedIndex)
+  }
+
+  React.useEffect(() => {
+    if (cardData && cardData.hp === 0) {
+      setViewState('dead')
+    } else {
+      setViewState('attack')
+    }
+  }, [cardData])
 
   const shouldRenderAttack1 = (idx) => {
-    if (index <= 2 && idx >= 3 && idx <= 5) {
-      return true
-    } else if (index >= 3 && idx <= 2) {
+    if ((index <= 2 && idx >= 3) || (index >= 3 && idx <= 2)) {
       return true
     }
     return false
+  }
+
+  const renderAttackButtons = () => {
+    return cardAtoms.map((atom, i) => {
+      if (shouldRenderAttack1(i)) {
+        // Generate a unique key based on card's ID or index
+        const attackKey = `${card.id || index}-attack-${i}`
+        return <Attack1 key={attackKey} cardAtom={atom} attCard={card} />
+      }
+      return null
+    })
   }
 
   return (
     <MainCardStyles>
       <p>{card.name}</p>
       {cardData && <p>{cardData.hp || 0}</p>}
-      {viewState === 'attack' && (
-        <>
-          {cardAtoms.map(
-            (atom, i) =>
-              shouldRenderAttack1(i) && (
-                <Attack1 key={i} cardAtom={atom} attCard={card} />
-              )
-          )}
-        </>
+      {viewState === 'attack' && renderAttackButtons()}
+      {viewState === 'dead' && (
+        <button onClick={handleCardDestroyed}>Remove Card</button>
       )}
     </MainCardStyles>
   )
