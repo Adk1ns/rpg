@@ -1,17 +1,20 @@
 {
   "Cards": [
     {
-      "name": "Ava2",
+      "name": "Ava",
       "category": "character",
+      "status": null,
       "id": 1,
       "image": "idk",
-      "hp": 100,
+      "hp": 10,
       "defense": 1,
       "speed": 1,
+      "accuracy": 1,
       "type": ["human", "science", "cyborg"],
       "weakness": ["machine", "ice", "fire"],
       "strength": ["machine", "electric"],
       "story": "character story - short",
+      "attack": 5,
       "options": [
         {
           "id": 1,
@@ -22,7 +25,7 @@
           "effect": "idk"
         },
         {
-          "id": 1,
+          "id": 2,
           "title": "Punch",
           "attack": 1,
           "accuracy": 1,
@@ -41,17 +44,20 @@
     },
 
     {
-      "name": "Charles2",
+      "name": "Charles",
       "category": "character",
+      "status": null,
       "id": 2,
       "image": "idk",
-      "hp": 100,
+      "hp": 10,
       "defense": 1,
-      "speed": 1,
+      "speed": 2,
+      "accuracy": 1,
       "type": ["human", "science", "idk"],
       "weakness": ["machine", "ice", "fire"],
       "strength": ["machine", "science"],
       "story": "character story - short",
+      "attack": 2,
       "options": [
         {
           "id": 1,
@@ -62,46 +68,7 @@
           "effect": "idk"
         },
         {
-          "id": 1,
-          "title": "Punch",
-          "attack": 1,
-          "accuracy": 1,
-          "impact": 0.9,
-          "effect": "idk"
-        },
-        {
-          "id": 3,
-          "title": "Block",
-          "attack": 0,
-          "accuracy": 1,
-          "impact": 0,
-          "effect": "idk"
-        }
-      ]
-    },
-    {
-      "name": "Chalupa2",
-      "category": "character",
-      "id": 3,
-      "image": "idk",
-      "hp": 100,
-      "defense": 1,
-      "speed": 1,
-      "type": ["human", "science", "idk"],
-      "weakness": ["machine", "ice", "fire"],
-      "strength": ["machine", "science"],
-      "story": "character story - short",
-      "options": [
-        {
-          "id": 1,
-          "title": "Blaster",
-          "attack": 1,
-          "accuracy": 1,
-          "impact": 0.9,
-          "effect": "idk"
-        },
-        {
-          "id": 1,
+          "id": 2,
           "title": "Punch",
           "attack": 1,
           "accuracy": 1,
@@ -120,9 +87,148 @@
     },
 
     {
-      "name": "Effect2",
+      "name": "Chalupa",
+      "category": "character",
+      "status": null,
+      "id": 3,
+      "image": "idk",
+      "hp": 10,
+      "defense": 1,
+      "speed": 1,
+      "accuracy": 1,
+      "type": ["human", "science", "idk"],
+      "weakness": ["machine", "ice", "fire"],
+      "strength": ["machine", "science"],
+      "story": "character story - short",
+      "attack": 2,
+      "options": [
+        {
+          "id": 1,
+          "title": "Blaster",
+          "attack": 1,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 2,
+          "title": "Punch",
+          "attack": 1,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 3,
+          "title": "Block",
+          "attack": 0,
+          "accuracy": 1,
+          "impact": 0,
+          "effect": "idk"
+        }
+      ]
+    },
+
+    {
+      "name": "Count Chocula",
+      "category": "character",
+      "status": null,
+      "id": 4,
+      "image": "idk",
+      "hp": 110,
+      "defense": 1,
+      "speed": 2,
+      "accuracy": 2,
+      "type": ["human", "science", "idk"],
+      "weakness": ["machine", "ice", "fire"],
+      "strength": ["machine", "science"],
+      "story": "character story - short",
+      "attack": 3,
+      "options": [
+        {
+          "id": 1,
+          "title": "Blaster",
+          "attack": 1,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 2,
+          "title": "Punch",
+          "attack": 1,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 3,
+          "title": "Block",
+          "attack": 0,
+          "accuracy": 1,
+          "impact": 0,
+          "effect": "idk"
+        }
+      ]
+    },
+
+    {
+      "name": "Jeff",
+      "category": "character",
+      "status": null,
+      "id": 5,
+      "image": "idk",
+      "hp": 10,
+      "defense": 1,
+      "speed": 1,
+      "accuracy": 1,
+      "type": ["human", "science", "idk"],
+      "weakness": ["machine", "ice", "fire"],
+      "strength": ["machine", "science"],
+      "story": "character story - short",
+      "attack": 2,
+      "options": [
+        {
+          "id": 1,
+          "title": "Blaster",
+          "attack": 1,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 1,
+          "title": "Sting",
+          "attack": 2,
+          "accuracy": 1,
+          "impact": 0.9,
+          "effect": "idk"
+        },
+        {
+          "id": 3,
+          "title": "Block",
+          "attack": 0,
+          "accuracy": 1,
+          "impact": 0,
+          "effect": "idk"
+        }
+      ]
+    },
+
+    {
+      "name": "Effect",
       "category": "effect",
       "id": 4,
+      "image": "idk",
+      "strength": ["fire", "electric", "machine", "science", "human", "cyborg"],
+      "weakness": ["ice"],
+      "add": "",
+      "remove": ""
+    },
+    {
+      "name": "Another Effect",
+      "category": "effect",
+      "id": 5,
       "image": "idk",
       "strength": ["fire", "electric", "machine", "science", "human", "cyborg"],
       "weakness": ["ice"],

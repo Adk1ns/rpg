@@ -9,6 +9,7 @@ import {
   Card5Atom,
 } from '../../data/Atoms'
 import MainCardStyles from './MainCardStyles'
+import Attack1 from './MainCardComponents/Attack1'
 
 const cardAtoms = [
   Card0Atom,
@@ -19,28 +20,7 @@ const cardAtoms = [
   Card5Atom,
 ]
 
-const MinusHpButton = ({ cardAtom }) => {
-  const [cardData, setCardData] = useAtom(cardAtom)
-  const card = cardAtom[0] // Extract the card object from the atom
-
-  const minusHp = () => {
-    setCardData((prevCardData) => {
-      if (prevCardData.hp) {
-        return {
-          ...prevCardData,
-          hp: prevCardData.hp - 1,
-        }
-      }
-      return prevCardData
-    })
-  }
-
-  if (!cardData || !cardData.hp) {
-    return null // If the atom has no HP value, don't render the button
-  }
-
-  return <button onClick={minusHp}>-1 hp {cardData.name}</button>
-}
+////////////////////////////////////////////////////////////////////////
 
 const MainCard = ({ card, index }) => {
   const [cardData, setCardData] = useAtom(cardAtoms[index])
@@ -52,15 +32,27 @@ const MainCard = ({ card, index }) => {
 
   console.log(card, index)
 
+  const shouldRenderAttack1 = (idx) => {
+    if (index <= 2 && idx >= 3 && idx <= 5) {
+      return true
+    } else if (index >= 3 && idx <= 2) {
+      return true
+    }
+    return false
+  }
+
   return (
     <MainCardStyles>
       <p>{card.name}</p>
       {cardData && <p>{cardData.hp || 0}</p>}
       {viewState === 'attack' && (
         <>
-          {cardAtoms.map((atom, i) => (
-            <MinusHpButton key={i} cardAtom={atom} />
-          ))}
+          {cardAtoms.map(
+            (atom, i) =>
+              shouldRenderAttack1(i) && (
+                <Attack1 key={i} cardAtom={atom} attCard={card} />
+              )
+          )}
         </>
       )}
     </MainCardStyles>

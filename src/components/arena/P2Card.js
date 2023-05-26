@@ -18,7 +18,7 @@ const P2Card = ({ drawCardP2 }) => {
     if (card.category === 'effect' && P2Effect.length === 0) {
       setP2Effect([...P2Effect, card])
       setP2Hand(P2Hand.filter((c) => c !== card))
-    } else if (card.category !== 'effect') {
+    } else if (card.category !== 'effect' && P2Table.length < 3) {
       setP2Table([...P2Table, card])
       setP2Hand(P2Hand.filter((c) => c !== card))
     }
@@ -26,7 +26,10 @@ const P2Card = ({ drawCardP2 }) => {
 
   return (
     <div>
-      P2Card <button onClick={() => drawCardP2()}>draw</button>
+      P2Card{' '}
+      <button onClick={() => drawCardP2()} disabled={P2Hand.length >= 5}>
+        draw
+      </button>
       {P2Hand.map((card, index) => (
         <div key={index} onClick={() => handleCardClick(card)}>
           {card.name}
