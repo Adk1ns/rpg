@@ -60,8 +60,6 @@ const ArenaHost = ({ arena }) => {
     setP1Table(P1Table.filter((card) => card.id !== id))
     setP2Table(P2Table.filter((card) => card.id !== id))
 
-    console.log(P1Table)
-
     if (P1CardA != null) {
       if (id === P1CardA.id) {
         setP1CardA(null)

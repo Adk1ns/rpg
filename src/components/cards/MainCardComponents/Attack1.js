@@ -23,11 +23,17 @@ const Attack1 = ({ cardAtom, attCard }) => {
   }
 
   const option = cardData.options.find((opt) => opt.id === 1) // Find the option with id 1
+  const option2 = cardData.options.find((opt) => opt.id === 2) // Find the option with id 2
 
   return (
-    <button onClick={minusHp}>
-      {option && option.title} {cardData.name}
-    </button>
+    <>
+      <button onClick={minusHp}>
+        {option && option.title} {cardData.name}
+      </button>
+      <button onClick={minusHp}>
+        {option2 && option2.title} {cardData.name}
+      </button>
+    </>
   )
 }
 
