@@ -7,20 +7,22 @@ import {
   Player2HandAtom,
   Player1TableAtom,
   Player2TableAtom,
+  Player1DeckAtom,
+  Player2DeckAtom,
 } from '../../data/Atoms'
-import DeckOne from '../../data/decks/DeckOne.json'
-import DeckTwo from '../../data/decks/DeckTwo.json'
+// import DeckOne from '../../data/decks/DeckOne.json'
+// import DeckTwo from '../../data/decks/DeckTwo.json'
 import P1Card from './P1Card'
 import P2Card from './P2Card'
 import MainCard from '../cards/MainCard'
 
 const ArenaHost = ({ arena }) => {
   const [P1Hand, setP1Hand] = useAtom(Player1HandAtom)
-  const [P1Deck, setP1Deck] = React.useState(DeckOne.Cards)
+  const [P1Deck, setP1Deck] = useAtom(Player1DeckAtom)
   const [P1Table, setP1Table] = useAtom(Player1TableAtom)
 
   const [P2Hand, setP2Hand] = useAtom(Player2HandAtom)
-  const [P2Deck, setP2Deck] = React.useState(DeckTwo.Cards)
+  const [P2Deck, setP2Deck] = useAtom(Player2DeckAtom)
   const [P2Table, setP2Table] = useAtom(Player2TableAtom)
 
   const drawCard = (playerHand, setPlayerHand, playerDeck, setPlayerDeck) => {
