@@ -9,9 +9,13 @@ import {
   Player2TableAtom,
   Player1DeckAtom,
   Player2DeckAtom,
+  P1FirstCard,
+  P1SecondCard,
+  P1ThirdCard,
+  P2FirstCard,
+  P2SecondCard,
+  P2ThirdCard,
 } from '../../data/Atoms'
-// import DeckOne from '../../data/decks/DeckOne.json'
-// import DeckTwo from '../../data/decks/DeckTwo.json'
 import P1Card from './P1Card'
 import P2Card from './P2Card'
 import MainCard from '../cards/MainCard'
@@ -20,15 +24,22 @@ const ArenaHost = ({ arena }) => {
   const [P1Hand, setP1Hand] = useAtom(Player1HandAtom)
   const [P1Deck, setP1Deck] = useAtom(Player1DeckAtom)
   const [P1Table, setP1Table] = useAtom(Player1TableAtom)
+  const [P1CardA, setP1CardA] = useAtom(P1FirstCard)
+  const [P1CardB, setP1CardB] = useAtom(P1SecondCard)
+  const [P1CardC, setP1CardC] = useAtom(P1ThirdCard)
 
   const [P2Hand, setP2Hand] = useAtom(Player2HandAtom)
   const [P2Deck, setP2Deck] = useAtom(Player2DeckAtom)
   const [P2Table, setP2Table] = useAtom(Player2TableAtom)
+  const [P2CardA, setP2CardA] = useAtom(P2FirstCard)
+  const [P2CardB, setP2CardB] = useAtom(P2SecondCard)
+  const [P2CardC, setP2CardC] = useAtom(P2ThirdCard)
 
   const drawCard = (playerHand, setPlayerHand, playerDeck, setPlayerDeck) => {
     if (playerDeck.length === 0) {
       console.log('Deck is empty')
     } else {
+      //
       const randomCard = Math.floor(Math.random() * playerDeck.length)
       setPlayerHand([...playerHand, playerDeck[randomCard]])
       setPlayerDeck(
@@ -54,34 +65,32 @@ const ArenaHost = ({ arena }) => {
       <div className="player-1-cards">
         <P1Card drawCardP1={drawCardP1} />
 
-        {P1Table.length > 0 &&
-          P1Table.map((card, index) => (
-            <MainCard
-              card={card}
-              key={index}
-              index={index}
-              onCardDestroyed={(idx) =>
-                handleCardDestroyed(idx, P1Table, setP1Table)
-              }
-            />
-          ))}
+        {P1CardA && (
+          <MainCard card={P1CardA} index={0} onCardDestroyed={() => {}} />
+        )}
+        {P1CardB && (
+          <MainCard card={P1CardB} index={1} onCardDestroyed={() => {}} />
+        )}
+        {P1CardC && (
+          <MainCard card={P1CardC} index={2} onCardDestroyed={() => {}} />
+        )}
 
         <EffectCardSlot />
       </div>
       Arena
       <div className="player-2-cards">
         <P2Card drawCardP2={drawCardP2} />
-        {P2Table.length > 0 &&
-          P2Table.map((card, index) => (
-            <MainCard
-              card={card}
-              key={index}
-              index={index + 3}
-              onCardDestroyed={(idx) =>
-                handleCardDestroyed(idx, P2Table, setP2Table)
-              }
-            />
-          ))}
+
+        {P2CardA && (
+          <MainCard card={P2CardA} index={3} onCardDestroyed={() => {}} />
+        )}
+        {P2CardB && (
+          <MainCard card={P2CardB} index={4} onCardDestroyed={() => {}} />
+        )}
+        {P2CardC && (
+          <MainCard card={P2CardC} index={5} onCardDestroyed={() => {}} />
+        )}
+
         <EffectCardSlot />
       </div>
     </ArenaStyles>
