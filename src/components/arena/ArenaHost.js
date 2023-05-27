@@ -56,8 +56,42 @@ const ArenaHost = ({ arena }) => {
     drawCard(P2Hand, setP2Hand, P2Deck, setP2Deck)
   }
 
-  const handleCardDestroyed = (index, playerTable, setPlayerTable) => {
-    setPlayerTable(playerTable.filter((card, i) => i !== index))
+  const handleCardDestroyed = (id) => {
+    setP1Table(P1Table.filter((card) => card.id !== id))
+    setP2Table(P2Table.filter((card) => card.id !== id))
+
+    console.log(P1Table)
+
+    if (P1CardA != null) {
+      if (id === P1CardA.id) {
+        setP1CardA(null)
+      }
+    }
+    if (P1CardB != null) {
+      if (id === P1CardB.id) {
+        setP1CardB(null)
+      }
+    }
+    if (P1CardC != null) {
+      if (id === P1CardC.id) {
+        setP1CardC(null)
+      }
+    }
+    if (P2CardA != null) {
+      if (id === P2CardA.id) {
+        setP2CardA(null)
+      }
+    }
+    if (P2CardB != null) {
+      if (id === P2CardB.id) {
+        setP2CardB(null)
+      }
+    }
+    if (P2CardC != null) {
+      if (id === P2CardC.id) {
+        setP2CardC(null)
+      }
+    }
   }
 
   return (
@@ -66,13 +100,25 @@ const ArenaHost = ({ arena }) => {
         <P1Card drawCardP1={drawCardP1} />
 
         {P1CardA && (
-          <MainCard card={P1CardA} index={0} onCardDestroyed={() => {}} />
+          <MainCard
+            card={P1CardA}
+            index={0}
+            onCardDestroyed={handleCardDestroyed}
+          />
         )}
         {P1CardB && (
-          <MainCard card={P1CardB} index={1} onCardDestroyed={() => {}} />
+          <MainCard
+            card={P1CardB}
+            index={1}
+            onCardDestroyed={handleCardDestroyed}
+          />
         )}
         {P1CardC && (
-          <MainCard card={P1CardC} index={2} onCardDestroyed={() => {}} />
+          <MainCard
+            card={P1CardC}
+            index={2}
+            onCardDestroyed={handleCardDestroyed}
+          />
         )}
 
         <EffectCardSlot />
@@ -82,13 +128,25 @@ const ArenaHost = ({ arena }) => {
         <P2Card drawCardP2={drawCardP2} />
 
         {P2CardA && (
-          <MainCard card={P2CardA} index={3} onCardDestroyed={() => {}} />
+          <MainCard
+            card={P2CardA}
+            index={3}
+            onCardDestroyed={handleCardDestroyed}
+          />
         )}
         {P2CardB && (
-          <MainCard card={P2CardB} index={4} onCardDestroyed={() => {}} />
+          <MainCard
+            card={P2CardB}
+            index={4}
+            onCardDestroyed={handleCardDestroyed}
+          />
         )}
         {P2CardC && (
-          <MainCard card={P2CardC} index={5} onCardDestroyed={() => {}} />
+          <MainCard
+            card={P2CardC}
+            index={5}
+            onCardDestroyed={handleCardDestroyed}
+          />
         )}
 
         <EffectCardSlot />

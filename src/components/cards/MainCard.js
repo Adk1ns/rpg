@@ -27,12 +27,7 @@ const MainCard = ({ card, index, onCardDestroyed }) => {
 
   React.useEffect(() => {
     setCardData(card)
-  }, [card, setCardData])
-
-  const handleCardDestroyed = () => {
-    const adjustedIndex = index >= 3 ? index - 3 : index
-    onCardDestroyed(adjustedIndex)
-  }
+  }, [])
 
   React.useEffect(() => {
     if (cardData && cardData.hp === 0) {
@@ -66,7 +61,10 @@ const MainCard = ({ card, index, onCardDestroyed }) => {
       {cardData && <p>{cardData.hp || 0}</p>}
       {viewState === 'attack' && renderAttackButtons()}
       {viewState === 'dead' && (
-        <button onClick={handleCardDestroyed}>Remove Card</button>
+        <>
+          <button onClick={() => onCardDestroyed(card.id)}>Remove Card</button>
+          <p>Dead</p>
+        </>
       )}
     </MainCardStyles>
   )
