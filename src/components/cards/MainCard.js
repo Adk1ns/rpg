@@ -10,6 +10,7 @@ import {
 } from '../../data/Atoms'
 import MainCardStyles from './MainCardStyles'
 import Attack1 from './MainCardComponents/Attack1'
+import { Player1TableAtom, Player2TableAtom } from '../../data/Atoms'
 
 const cardAtoms = [
   Card0Atom,

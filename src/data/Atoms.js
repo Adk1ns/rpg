@@ -1,10 +1,12 @@
 import { atom } from 'jotai'
+import DeckOne from '../data/decks/DeckOne.json'
+import DeckTwo from '../data/decks/DeckTwo.json'
 
 export const Player1HandAtom = atom([])
 export const Player2HandAtom = atom([])
 
-export const Player1DeckAtom = atom([])
-export const Player2DeckAtom = atom([])
+export const Player1DeckAtom = atom(DeckOne.Cards)
+export const Player2DeckAtom = atom(DeckTwo.Cards)
 
 export const Player1TableAtom = atom([])
 export const Player2TableAtom = atom([])
