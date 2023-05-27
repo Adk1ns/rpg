@@ -9,7 +9,7 @@
       "hp": 10,
       "defense": 1,
       "speed": 1,
-      "accuracy": 1,
+      "accuracy": 99,
       "type": ["human", "science", "cyborg"],
       "weakness": ["machine", "ice", "fire"],
       "strength": ["machine", "electric"],
@@ -20,7 +20,7 @@
           "id": 1,
           "title": "Blaster",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -28,7 +28,7 @@
           "id": 2,
           "title": "Punch",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -63,7 +63,7 @@
           "id": 1,
           "title": "Blaster",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -71,7 +71,7 @@
           "id": 2,
           "title": "Punch",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -106,7 +106,7 @@
           "id": 1,
           "title": "Blaster",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -149,7 +149,7 @@
           "id": 1,
           "title": "Blaster",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -181,7 +181,7 @@
       "hp": 10,
       "defense": 1,
       "speed": 1,
-      "accuracy": 1,
+      "accuracy": 99,
       "type": ["human", "science", "idk"],
       "weakness": ["machine", "ice", "fire"],
       "strength": ["machine", "science"],
@@ -191,8 +191,8 @@
         {
           "id": 1,
           "title": "Blaster",
-          "attack": 1,
-          "accuracy": 1,
+          "attack": 2,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },

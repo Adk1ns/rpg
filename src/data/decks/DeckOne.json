@@ -20,15 +20,15 @@
           "id": 1,
           "title": "Blaster",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 98,
           "impact": 0.9,
-          "effect": "idk"
+          "effect": "slow"
         },
         {
           "id": 2,
           "title": "Punch",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 98,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -63,7 +63,7 @@
           "id": 1,
           "title": "Blaster",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -71,7 +71,7 @@
           "id": 2,
           "title": "Punch",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 10,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -106,7 +106,7 @@
           "id": 1,
           "title": "Blaster",
           "attack": 1,
-          "accuracy": 1,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -138,7 +138,7 @@
       "hp": 110,
       "defense": 1,
       "speed": 2,
-      "accuracy": 2,
+      "accuracy": 50,
       "type": ["human", "science", "idk"],
       "weakness": ["machine", "ice", "fire"],
       "strength": ["machine", "science"],
@@ -148,16 +148,16 @@
         {
           "id": 1,
           "title": "Blaster",
-          "attack": 1,
-          "accuracy": 1,
+          "attack": 10,
+          "accuracy": 50,
           "impact": 0.9,
           "effect": "idk"
         },
         {
           "id": 2,
           "title": "Punch",
-          "attack": 1,
-          "accuracy": 1,
+          "attack": 10,
+          "accuracy": 50,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -181,7 +181,7 @@
       "hp": 10,
       "defense": 1,
       "speed": 1,
-      "accuracy": 1,
+      "accuracy": 99,
       "type": ["human", "science", "idk"],
       "weakness": ["machine", "ice", "fire"],
       "strength": ["machine", "science"],
@@ -191,8 +191,8 @@
         {
           "id": 1,
           "title": "Blaster",
-          "attack": 1,
-          "accuracy": 1,
+          "attack": 2,
+          "accuracy": 100,
           "impact": 0.9,
           "effect": "idk"
         },
@@ -200,7 +200,7 @@
           "id": 2,
           "title": "Punch",
           "attack": 2,
-          "accuracy": 1,
+          "accuracy": 99,
           "impact": 0.9,
           "effect": "idk"
         },
