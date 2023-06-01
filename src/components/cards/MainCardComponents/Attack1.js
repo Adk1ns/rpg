@@ -1,13 +1,13 @@
 import React from 'react'
 import { useAtom } from 'jotai'
-import {
-  BlockP1A,
-  BlockP1B,
-  BlockP1C,
-  BlockP2A,
-  BlockP2B,
-  BlockP2C,
-} from '../../../data/Atoms'
+// import {
+//   BlockP1A,
+//   BlockP1B,
+//   BlockP1C,
+//   BlockP2A,
+//   BlockP2B,
+//   BlockP2C,
+// } from '../../../data/Atoms'
 
 const Attack1 = ({ cardAtom, attCard }) => {
   const [cardData, setCardData] = useAtom(cardAtom)
@@ -72,9 +72,7 @@ const Attack1 = ({ cardAtom, attCard }) => {
 
   return (
     <>
-      <button onClick={minusHp}>
-        {option && option.title} {cardData.name}
-      </button>
+      <button onClick={minusHp}>{cardData.name}</button>
       <button onClick={minusHp2}>
         {option2 && option2.title} {cardData.name}
       </button>

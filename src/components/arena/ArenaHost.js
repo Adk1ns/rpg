@@ -118,10 +118,10 @@ const ArenaHost = ({ arena }) => {
             onCardDestroyed={handleCardDestroyed}
           />
         )}
-
-        <EffectCardSlot />
       </div>
+      <EffectCardSlot />
       Arena
+      <EffectCardSlot />
       <div className="player-2-cards">
         <P2Card drawCardP2={drawCardP2} />
 
@@ -146,8 +146,6 @@ const ArenaHost = ({ arena }) => {
             onCardDestroyed={handleCardDestroyed}
           />
         )}
-
-        <EffectCardSlot />
       </div>
     </ArenaStyles>
   )
