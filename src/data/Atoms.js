@@ -30,3 +30,11 @@ export const P1ThirdCard = atom()
 export const P2FirstCard = atom()
 export const P2SecondCard = atom()
 export const P2ThirdCard = atom()
+
+export const BlockP1A = atom(false)
+export const BlockP1B = atom(false)
+export const BlockP1C = atom(false)
+
+export const BlockP2A = atom(true)
+export const BlockP2B = atom(true)
+export const BlockP2C = atom(false)

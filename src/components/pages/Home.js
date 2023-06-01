@@ -1,5 +1,8 @@
 import React from 'react'
 import HomeStyles from '../home/HomeStyles'
+import { Link } from 'react-router-dom'
+
+//Trainer button is a link to train page
 
 //home will contain:
 //my deck
@@ -13,7 +16,14 @@ import HomeStyles from '../home/HomeStyles'
 //log in
 
 const Home = () => {
-  return <HomeStyles>Home</HomeStyles>
+  return (
+    <HomeStyles>
+      Home
+      <Link to="/train">
+        <button>Trainer</button>
+      </Link>
+    </HomeStyles>
+  )
 }
 
 export default Home

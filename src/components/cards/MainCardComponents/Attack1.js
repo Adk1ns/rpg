@@ -1,5 +1,13 @@
 import React from 'react'
 import { useAtom } from 'jotai'
+import {
+  BlockP1A,
+  BlockP1B,
+  BlockP1C,
+  BlockP2A,
+  BlockP2B,
+  BlockP2C,
+} from '../../../data/Atoms'
 
 const Attack1 = ({ cardAtom, attCard }) => {
   const [cardData, setCardData] = useAtom(cardAtom)
@@ -8,21 +16,28 @@ const Attack1 = ({ cardAtom, attCard }) => {
     setCardData((prevCardData) => {
       if (prevCardData.hp) {
         const option = attCard.options.find((opt) => opt.id === 1)
-        const accuracy = option ? attCard.options[0].accuracy : 100 // Use the accuracy value from the option if found, otherwise default to 100
+        const accuracy = option ? attCard.options[0].accuracy : 100
         const attackValue = option ? attCard.options[0].attack : 7
-        console.log('attCard', attCard, attCard.options[0].effect)
+        const effect = option ? attCard.options[0].effect : null
 
-        // Calculate the likelihood of the attack being successful based on accuracy
-        const successChance = Math.random() * 100 // Generate a random number between 0 and 100
+        const successChance = Math.random() * 100
         if (successChance <= accuracy) {
+          console.log(prevCardData, attCard, Math.random() * 100 <= 50)
           // Attack is successful
-          //add code to add effect with attack, a 50% chance prevCardData will be equal to attCard.options[0].effect
-          return {
-            ...prevCardData,
-            hp: prevCardData.hp - attackValue,
+          if (Math.random() * 100 <= 70) {
+            // There is a 30% chance to update the card status to the effect
+            return {
+              ...prevCardData,
+              hp: prevCardData.hp - attackValue,
+              status: effect,
+            }
+          } else {
+            return {
+              ...prevCardData,
+              hp: prevCardData.hp - attackValue,
+            }
           }
         }
-        console.log('attCard', attCard, attCard.options[0].effect)
       }
       return prevCardData
     })
@@ -48,7 +63,7 @@ const Attack1 = ({ cardAtom, attCard }) => {
     })
   }
 
-  if (!cardData || !cardData.hp) {
+  if (!cardData || cardData.hp < 0) {
     return null // If the atom has no HP value, don't render the button
   }
 
