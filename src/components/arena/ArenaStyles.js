@@ -14,12 +14,12 @@ const ArenaStyles = styled.div`
   .player-1-cards {
     background-color: ${(props) => props.theme.white};
     color: ${(props) => props.theme.text};
-    height: 30vh;
+    height: 35vh;
     width: 90vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
 
     border: 1px dashed black;
   }
@@ -27,12 +27,12 @@ const ArenaStyles = styled.div`
   .player-2-cards {
     background-color: ${(props) => props.theme.white};
     color: ${(props) => props.theme.text};
-    height: 30vh;
+    height: 35vh;
     width: 90vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: end;
+    align-items: center;
 
     border: 1px dashed black;
   }

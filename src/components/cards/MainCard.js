@@ -10,6 +10,7 @@ import {
 } from '../../data/Atoms'
 import MainCardStyles from './MainCardStyles'
 import Attack1 from './MainCardComponents/Attack1'
+import Attack2 from './MainCardComponents/Attack2'
 import { Player1TableAtom, Player2TableAtom } from '../../data/Atoms'
 
 const cardAtoms = [
@@ -23,22 +24,22 @@ const cardAtoms = [
 
 const MainCard = ({ card, index, onCardDestroyed }) => {
   const [cardData, setCardData] = useAtom(cardAtoms[index])
-  const [viewState, setViewState] = React.useState('attack')
+  const [state, setState] = React.useState('wait')
+  // const [blockState, setBlockState] = React.useState('hi')
 
   React.useEffect(() => {
     setCardData(card)
-  }, [card, setCardData])
-
-  const handleCardDestroyed = () => {
-    const adjustedIndex = index >= 3 ? index - 3 : index
-    onCardDestroyed(adjustedIndex)
-  }
+  }, [])
 
   React.useEffect(() => {
-    if (cardData && cardData.hp === 0) {
-      setViewState('dead')
+    if (cardData && cardData.hp <= 0) {
+      setState('dead')
     } else {
-      setViewState('attack')
+      setState('wait')
+      const timer = setTimeout(() => {
+        setState('attack')
+      }, cardData && 5000 - cardData.speed)
+      return () => clearTimeout(timer)
     }
   }, [cardData])
 
@@ -49,25 +50,53 @@ const MainCard = ({ card, index, onCardDestroyed }) => {
     return false
   }
 
+  const resetAttTimer = () => {
+    setState('wait')
+    const timer = setTimeout(() => {
+      setState('attack')
+    }, 5000 - cardData.speed)
+    return () => clearTimeout(timer)
+  }
+
   const renderAttackButtons = () => {
     return cardAtoms.map((atom, i) => {
       if (shouldRenderAttack1(i)) {
-        // Generate a unique key based on card's ID or index
         const attackKey = `${card.id || index}-attack-${i}`
-        return <Attack1 key={attackKey} cardAtom={atom} attCard={card} />
+        return (
+          <div key={attackKey} onClick={resetAttTimer}>
+            <Attack1 key={attackKey} cardAtom={atom} attCard={card} />
+          </div>
+        )
       }
       return null
     })
   }
 
+  // const handleBlockClick = () => {
+  //   console.log(blockState)
+  //   setBlockState('blocking')
+  //   setTimeout(() => {
+  //     setBlockState('blocked')
+  //     setTimeout(() => {
+  //       setBlockState('')
+  //     }, 3000)
+  //   }, 3000)
+  // }
+
   return (
     <MainCardStyles>
       <p>{card.name}</p>
       {cardData && <p>{cardData.hp || 0}</p>}
-      {viewState === 'attack' && renderAttackButtons()}
-      {viewState === 'dead' && (
-        <button onClick={handleCardDestroyed}>Remove Card</button>
+      {state === 'attack' && renderAttackButtons()}
+      {state === 'dead' && (
+        <>
+          <button onClick={() => onCardDestroyed(card.id)}>Remove Card</button>
+          <p>Dead</p>
+        </>
       )}
+      {state === 'wait' && <p>Waiting</p>}
+      {/* <button onClick={handleBlockClick}>Block</button>
+      <p>{blockState}</p> */}
     </MainCardStyles>
   )
 }
